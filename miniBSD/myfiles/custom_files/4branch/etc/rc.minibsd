@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "Creating  /var and /tmp under MFS..."
+mount_mfs -s 10000 -f 1024 -b 8192 -o rw,noatime,async swap /var 2>&1
+sleep 3
+
+mkdir -m 0755 -p /var/empty
+mkdir -m 1777 -p /var/tmp
+mkdir -m 0755 -p /var/tmp/vi.recover
+mkdir -m 0755 -p /var/cron
+mkdir -m 0755 -p /var/run
+mkdir -m 0755 -p /var/preserve
+mkdir -m 0755 -p /var/spool/lock
+mkdir -m 0755 -p /var/log
+
+if [ ! -e /tmp ]; then
+	ln -sf /var/tmp /tmp
+fi

@@ -1,0 +1,30 @@
+miniBSD
+Autori: Davide D'Amico, Dario Freni, Gianmarco Giovannelli
+
+MiniBSD consta di una serie di script sh che supportano
+l'utente nella creazione di una immagine di dimensioni ridotte
+contenente il sistema operativo FreeBSD pienamente funzionante.
+
+MiniBSD è pensato per supporti di memorizzazione come
+smart-media o flash-card che possono essere usati in dispositivi
+come epia, soekris o altro.
+
+MiniBSD è derivato dall'idea di Manuel Kasper <mk@neon1.net>.
+
+MiniBSD rappresenta un compromesso tra un sistema FreeBSD full e
+un sistema minimale come PicoBSD.
+
+Per avviare MiniBSD si possono avviare in sequenza gli scripts,
+impostare la variabile CHAIN="Y" in config.sh ed avviare il
+primo script 0.binaries.sh oppure lanciare miniBSD.sh per 
+avere una interfaccia curses.
+
+Nella prima creazione di MiniBSD è opportuno eseguire gli script
+in sequenza, a partire dallo script 0.binaries.sh fino al
+6.create_img.sh.
+
+Il file config.sh contiene opportuni valori per alcune variabili
+usate negli scripts.
+
+Ulteriori scripts di supporto sono stati sviluppati per creare 
+un file immagine ISO e un archivio TAR di MiniBSD creato.

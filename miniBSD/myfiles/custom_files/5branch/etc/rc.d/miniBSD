@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# PROVIDE: miniBSD
+# BEFORE: disks
+# KEYWORD: FreeBSD
+
+echo "Generating /tmp via md"
+MDDEVICE=`/sbin/mdconfig -a -t malloc -o compress -s 16m`
+/sbin/newfs -U /dev/${MDDEVICE}
+/sbin/mount -o nodev,noexec,nosuid,noatime /dev/${MDDEVICE} /tmp
+
+echo "Generating /var via md"
+MDDEVICE=`/sbin/mdconfig -a -t malloc -o compress -s 16m`
+/sbin/newfs -U /dev/${MDDEVICE}
+/sbin/mount -o noatime /dev/${MDDEVICE} /var
+
+mkdir -m 0755 -p /var/empty
+mkdir -m 1777 -p /var/tmp
+mkdir -m 0755 -p /var/tmp/vi.recover
+mkdir -m 0755 -p /var/cron
+mkdir -m 0755 -p /var/run
+mkdir -m 0755 -p /var/preserve
+mkdir -m 0755 -p /var/spool/lock
+mkdir -m 0755 -p /var/log
+
+if [ ! -e /tmp ]; then
+	ln -sf /var/tmp /tmp
+fi

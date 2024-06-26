@@ -1,0 +1,70 @@
+# MINIBSD kernel template file for FreeBSD 4.x 
+
+machine		i386
+cpu			I486_CPU
+cpu			I586_CPU
+cpu			I686_CPU
+ident		MINIBSD
+maxusers	0
+
+options 	INET
+options 	FFS	
+options 	FFS_ROOT	
+options 	SOFTUPDATES	
+options 	UFS_DIRHASH	
+options 	MFS		
+options 	MD_ROOT	
+options 	PROCFS	
+options 	COMPAT_43
+options 	UCONSOLE	
+options 	USERCONFIG
+options 	KTRACE	
+options 	SYSVSHM	
+options 	SYSVMSG	
+options 	SYSVSEM	
+options 	P1003_1B
+options 	_KPOSIX_PRIORITY_SCHEDULING
+options		ICMP_BANDLIM	
+options		NO_SWAPPING
+
+#options         ATKBD_DFLT_KEYMAP
+#makeoptions     ATKBD_DFLT_KEYMAP="it.iso.kbd"
+
+# Custom setting for soekris
+#options		CLK_USE_I8254_CALIBRATION
+#options		CPU_ELAN
+#options		HZ=250
+
+device		isa
+device		pci
+
+# ATA and ATAPI devices
+#device		ata0	at isa? port IO_WD1 irq 14
+#device		ata1	at isa? port IO_WD2 irq 15
+device		ata
+device		atadisk			# ATA disk drives
+
+device          atkbdc0 at isa? port IO_KBD
+device          atkbd0  at atkbdc? irq 1 flags 0x1
+device          psm0    at atkbdc? irq 12
+device          vga0    at isa?
+device          sc0     at isa? flags 0x100
+
+device          npx0    at nexus? port IO_NPX irq 13
+
+device          miibus
+device          fxp
+device          rl
+device          xl
+device          ed
+
+device          sio0    at isa? port IO_COM1 irq 4
+
+pseudo-device   loop 
+pseudo-device   ether
+pseudo-device   pty 
+pseudo-device   bpf 
+pseudo-device   splash 
+
+# end base kernel config
+

@@ -1,0 +1,5 @@
+# See the fstab(5) manual page for important information on automatic mounts
+# of network filesystems before modifying this file.
+#
+# Device		Mountpoint	FStype	Options		Dump	Pass#
+/dev/ad0s1a		/		ufs	rw,noatime	1	1

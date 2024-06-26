@@ -1,0 +1,61 @@
+# MINIBSD kernel template file for FreeBSD 4.x 
+
+machine		i386
+cpu		    I486_CPU
+cpu		    I586_CPU
+cpu			I686_CPU
+ident		MINIBSD
+maxusers	0
+
+options 	SCHED_4BSD		
+options 	INET
+options 	FFS	
+options 	SOFTUPDATES
+options 	UFS_ACL	
+options 	UFS_DIRHASH	
+options 	COMPAT_43
+options 	COMPAT_FREEBSD4
+options 	KTRACE
+options 	SYSVSHM	
+options 	SYSVMSG	
+options 	SYSVSEM
+options 	_KPOSIX_PRIORITY_SCHEDULING
+options		NMBCLUSTERS=16384
+options 	PROCFS
+options 	PSEUDOFS	
+# options   	ROOTDEVNAME=\"ufs:ad0s4\"
+
+#options         ATKBD_DFLT_KEYMAP
+#makeoptions     ATKBD_DFLT_KEYMAP="it.iso.kbd"
+
+device		isa
+device		pci
+
+device		ata
+device		atadisk	
+device		atapicd
+
+device		atkbdc
+device		atkbd
+device		vga	
+device		splash	
+device		sc
+device		npx
+device		sio	
+
+device		miibus	
+device		rl	
+device		vr	
+device		fxp	
+device		ed	
+
+device		loop	
+device		mem	
+device		io
+device		random
+device		ether
+device		pty	
+device		bpf	
+
+# end base kernel config
+
